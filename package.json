@@ -1,0 +1,11 @@
+{
+  "name": "dx-localstack",
+  "version": "1.0.0",
+  "description": "",
+  "main": "lambda/main.js",
+  "scripts": {
+    "test": "node -e \"(async () => console.log(await require('./lambda/main.js').handler({'num1':5,'num2':10})))();\""
+  },
+  "author": "",
+  "license": "ISC"
+}
