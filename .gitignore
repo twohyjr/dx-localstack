@@ -1,5 +1,9 @@
 *.terraform
 
 terraform.*
-output.txt
+terraform.*.*
+terraform/zips
+
 lambda_function.zip
+*.txt
+.DS_STORE

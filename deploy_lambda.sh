@@ -1,11 +1,11 @@
 #! /bin/bash
 
-zip -r -q ./lamda_function.zip index.js
+zip -r -q ./index.zip index.js
 
 aws \
     --endpoint-url=http://localhost:4566 \
     lambda update-function-code \
-    --function-name  test_lambda \
-    --zip-file fileb://lamda_function.zip
+    --function-name  helloworld \
+    --zip-file fileb://index.zip
 
-rm lamda_function.zip
+rm index.zip

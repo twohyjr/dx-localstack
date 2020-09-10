@@ -30,14 +30,18 @@ resource "aws_iam_role" "lambda_role" {
 # zip up the current lambda file
 data "archive_file" "lambda_zip" {
     type          = "zip"
-    source_file   = "index.js"
-    output_path   = "lambda_function.zip"
+    output_path   = "zips/dummy.zip"
+
+    source {
+      content = "hello"
+      filename = "index.js"
+    }
 }
 
-# create the lambda
-resource "aws_lambda_function" "test_lambda" {
-  filename         = "lambda_function.zip"
-  function_name    = "test_lambda"
+# create the lambda called helloworld
+resource "aws_lambda_function" "helloworld" {
+  filename         = data.archive_file.lambda_zip.output_path
+  function_name    = "helloworld"
   role             = aws_iam_role.lambda_role.arn
   handler          = "index.handler"
   source_code_hash = data.archive_file.lambda_zip.output_base64sha256
